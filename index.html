@@ -10,8 +10,8 @@
         /* General Styles */
         body {
             font-family: 'Montserrat', sans-serif;
-            background-color: #121212;
-            color: #f5f5f5;
+            background: linear-gradient(135deg, #F8EDFF, #BFCFE7); /* Gradient background */
+            color: #3D3B40; /* Dark text for readability */
             margin: 0;
             padding: 0;
             overflow-x: hidden;
@@ -27,7 +27,7 @@
         }
 
         a:hover {
-            color: #ff8c00;
+            color: #1679AB; /* Vibrant blue for links on hover */
         }
 
         /* Welcome Page Styles */
@@ -37,8 +37,8 @@
             justify-content: center;
             align-items: center;
             height: 100vh;
-            background: linear-gradient(135deg, #1e1e1e 0%, #000 100%);
-            color: white;
+            background: linear-gradient(135deg, #102C57 0%, #1679AB 100%); /* Gradient background */
+            color: #F8EDFF; /* Light text color for contrast */
             text-align: center;
         }
 
@@ -56,7 +56,7 @@
 
         button {
             padding: 12px 24px;
-            background-color: #ff8c00;
+            background-color: #1679AB; /* Vibrant blue for buttons */
             border: none;
             border-radius: 30px;
             font-weight: bold;
@@ -67,7 +67,7 @@
         }
 
         button:hover {
-            background-color: #e52e71;
+            background-color: #3D3B40; /* Darker shade on hover */
             transform: translateY(-3px);
         }
 
@@ -76,7 +76,7 @@
             max-width: 1000px;
             margin: 40px auto;
             padding: 40px;
-            background-color: #29293d;
+            background-color: #F8EDFF; /* Light background for about section */
             border-radius: 15px;
             box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
             display: none;
@@ -84,23 +84,23 @@
 
         h1, h2 {
             text-align: center;
-            color: #ff8c00;
+            color: #102C57; /* Deep navy for headers */
         }
 
         p {
             font-size: 18px;
             line-height: 1.7;
-            color: #e5e5e5;
+            color: #3D3B40; /* Dark text */
         }
 
         .info {
             display: flex;
             justify-content: space-between;
-            background-color: #33334d;
+            background-color: #BFCFE7; /* Light section background */
             padding: 20px;
             border-radius: 10px;
             margin-bottom: 30px;
-            color: #ff8c00;
+            color: #3D3B40; /* Dark text */
             font-weight: bold;
         }
 
@@ -109,7 +109,7 @@
         }
 
         .about, .learning, .goals, .contact {
-            background-color: #3c3c57;
+            background-color: #F8EDFF; /* Light section background */
             padding: 30px;
             border-radius: 15px;
             margin-bottom: 30px;
@@ -132,25 +132,38 @@
         }
 
         ul li {
-            background-color: #4c4c67;
+            background-color: #1679AB; /* Vibrant blue for list items */
             padding: 15px;
             border-radius: 8px;
             margin-bottom: 10px;
-            color: #f5f5f5;
+            color: #F8EDFF; /* Light text */
             transition: background-color 0.3s ease;
         }
 
         ul li:hover {
-            background-color: #565679;
+            background-color: #3D3B40; /* Darker shade on hover */
         }
 
         .contact ul li a {
-            color: #ff8c00;
+            color: #F8EDFF; /* Light text for links */
             font-weight: bold;
+            position: relative; /* Position relative for tooltip */
         }
 
-        .contact ul li a:hover {
-            color: #e52e71;
+        .contact ul li a:hover::after {
+            content: attr(title); /* Show title as tooltip */
+            position: absolute;
+            background: #102C57; /* Dark background for tooltip */
+            color: #F8EDFF; /* Light text for tooltip */
+            padding: 5px 10px;
+            border-radius: 5px;
+            white-space: nowrap;
+            top: -30px; /* Position above the link */
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 10;
+            opacity: 1;
+            transition: opacity 0.2s ease;
         }
 
         @media (max-width: 768px) {
@@ -211,10 +224,13 @@
                 <li><a href="https://web.facebook.com/ahmadullahhadi" target="_blank">Facebook</a></li>
                 <li><a href="https://www.instagram.com/oddman854" target="_blank">Instagram</a></li>
                 <li><a href="https://github.com/ahmadullahhadi" target="_blank">GitHub</a></li>
-                <li><a href="mailto:ahmadullahhadi85@gmail.com">Email</a></li>
-                <li><a href="tel:+8801611469710">Phone</a></li>
+                <li><a href="mailto:ahmadullahhadi85@gmail.com" title="ahmadullahhadi85@gmail.com">Email</a></li>
+                <li><a href="tel:+880 1611-469710" title="+8801611469710">Phone</a></li>
             </ul>
         </div>
+
+        <!-- Back Button -->
+        <button style="margin-top: 20px;" onclick="document.getElementById('about-section').style.display='none'; document.getElementById('welcome-section').style.display='flex';">Back to Welcome</button>
     </div>
 
     <script>
