@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -10,8 +11,8 @@
         /* General Styles */
         body {
             font-family: 'Montserrat', sans-serif;
-            background: linear-gradient(135deg, #F8EDFF, #BFCFE7); /* Gradient background */
-            color: #3D3B40; /* Dark text for readability */
+            background-color: #0D1B2A;
+            color: #F0F4F8;
             margin: 0;
             padding: 0;
             overflow-x: hidden;
@@ -23,11 +24,12 @@
 
         a {
             text-decoration: none;
+            color: #F0F4F8;
             transition: color 0.3s ease;
         }
 
         a:hover {
-            color: #1679AB; /* Vibrant blue for links on hover */
+            color: #FF6B6B;
         }
 
         /* Welcome Page Styles */
@@ -37,8 +39,7 @@
             justify-content: center;
             align-items: center;
             height: 100vh;
-            background: linear-gradient(135deg, #102C57 0%, #1679AB 100%); /* Gradient background */
-            color: #F8EDFF; /* Light text color for contrast */
+            background: linear-gradient(135deg, #0D1B2A 0%, #1B263B 100%);
             text-align: center;
         }
 
@@ -46,7 +47,7 @@
             font-size: 4em;
             font-weight: bold;
             margin-bottom: 20px;
-            letter-spacing: 2px;
+            color: #FF6B6B;
         }
 
         .welcome-container p {
@@ -56,7 +57,7 @@
 
         button {
             padding: 12px 24px;
-            background-color: #1679AB; /* Vibrant blue for buttons */
+            background-color: #FF6B6B;
             border: none;
             border-radius: 30px;
             font-weight: bold;
@@ -67,7 +68,7 @@
         }
 
         button:hover {
-            background-color: #3D3B40; /* Darker shade on hover */
+            background-color: #FFA69E;
             transform: translateY(-3px);
         }
 
@@ -76,7 +77,7 @@
             max-width: 1000px;
             margin: 40px auto;
             padding: 40px;
-            background-color: #F8EDFF; /* Light background for about section */
+            background-color: #1B263B;
             border-radius: 15px;
             box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
             display: none;
@@ -84,23 +85,23 @@
 
         h1, h2 {
             text-align: center;
-            color: #102C57; /* Deep navy for headers */
+            color: #FF6B6B;
         }
 
         p {
             font-size: 18px;
             line-height: 1.7;
-            color: #3D3B40; /* Dark text */
+            color: #F0F4F8;
         }
 
         .info {
             display: flex;
             justify-content: space-between;
-            background-color: #BFCFE7; /* Light section background */
+            background-color: #23395B;
             padding: 20px;
             border-radius: 10px;
             margin-bottom: 30px;
-            color: #3D3B40; /* Dark text */
+            color: #FF6B6B;
             font-weight: bold;
         }
 
@@ -109,7 +110,7 @@
         }
 
         .about, .learning, .goals, .contact {
-            background-color: #F8EDFF; /* Light section background */
+            background-color: #2C3E50;
             padding: 30px;
             border-radius: 15px;
             margin-bottom: 30px;
@@ -132,38 +133,60 @@
         }
 
         ul li {
-            background-color: #1679AB; /* Vibrant blue for list items */
+            background-color: #34495E;
             padding: 15px;
             border-radius: 8px;
             margin-bottom: 10px;
-            color: #F8EDFF; /* Light text */
+            color: #F0F4F8;
             transition: background-color 0.3s ease;
         }
 
         ul li:hover {
-            background-color: #3D3B40; /* Darker shade on hover */
+            background-color: #3D3B40;
         }
 
+        /* Contact Section */
         .contact ul li a {
-            color: #F8EDFF; /* Light text for links */
-            font-weight: bold;
-            position: relative; /* Position relative for tooltip */
+            position: relative;
+        }
+
+        .contact ul li a::after {
+            content: attr(data-hover);
+            position: absolute;
+            left: 0;
+            top: 100%;
+            background-color: #FF6B6B;
+            color: white;
+            padding: 5px;
+            font-size: 14px;
+            border-radius: 4px;
+            white-space: nowrap;
+            display: none;
         }
 
         .contact ul li a:hover::after {
-            content: attr(title); /* Show title as tooltip */
-            position: absolute;
-            background: #102C57; /* Dark background for tooltip */
-            color: #F8EDFF; /* Light text for tooltip */
-            padding: 5px 10px;
-            border-radius: 5px;
-            white-space: nowrap;
-            top: -30px; /* Position above the link */
-            left: 50%;
-            transform: translateX(-50%);
-            z-index: 10;
-            opacity: 1;
-            transition: opacity 0.2s ease;
+            display: block;
+        }
+
+        /* Floating Back Button */
+        .back-button {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            padding: 10px 15px;
+            background-color: #FF6B6B;
+            border: none;
+            border-radius: 30px;
+            color: white;
+            font-weight: bold;
+            cursor: pointer;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+            transition: background-color 0.3s ease;
+            display: none; /* Hide by default */
+        }
+
+        .back-button:hover {
+            background-color: #FFA69E;
         }
 
         @media (max-width: 768px) {
@@ -178,6 +201,7 @@
         }
     </style>
 </head>
+
 <body>
 
     <!-- Welcome Section -->
@@ -221,25 +245,33 @@
         <div class="contact">
             <h2>Contact Information</h2>
             <ul>
-                <li><a href="https://web.facebook.com/ahmadullahhadi" target="_blank">Facebook</a></li>
-                <li><a href="https://www.instagram.com/oddman854" target="_blank">Instagram</a></li>
-                <li><a href="https://github.com/ahmadullahhadi" target="_blank">GitHub</a></li>
-                <li><a href="mailto:ahmadullahhadi85@gmail.com" title="ahmadullahhadi85@gmail.com">Email</a></li>
-                <li><a href="tel:+880 1611-469710" title="+8801611469710">Phone</a></li>
+                <li><a href="https://web.facebook.com/ahmadullahhadi" target="_blank" data-hover="Facebook: Ahmadullah Hadi">Facebook</a></li>
+                <li><a href="https://www.instagram.com/oddman854" target="_blank" data-hover="Instagram: oddman854">Instagram</a></li>
+                <li><a href="https://github.com/ahmadullahhadi" target="_blank" data-hover="GitHub: ahmadullahhadi">GitHub</a></li>
+                <li><a href="mailto:ahmadullahhadi85@gmail.com" data-hover="Email: ahmadullahhadi85@gmail.com">Email</a></li>
+                <li><a href="tel:+8801611469710" data-hover="Phone: +8801611469710">Phone</a></li>
             </ul>
         </div>
-
-        <!-- Back Button -->
-        <button style="margin-top: 20px;" onclick="document.getElementById('about-section').style.display='none'; document.getElementById('welcome-section').style.display='flex';">Back to Welcome</button>
     </div>
 
+    <button class="back-button" id="backButton">Back to Home</button>
+
     <script>
-        // JavaScript to toggle between Welcome and About Me sections
+        // Toggle between Welcome and About Me sections
         document.getElementById('aboutButton').addEventListener('click', function() {
             document.getElementById('welcome-section').style.display = 'none';
             document.getElementById('about-section').style.display = 'block';
+            document.getElementById('backButton').style.display = 'block'; // Show back button
+        });
+
+        // Back button functionality
+        document.getElementById('backButton').addEventListener('click', function() {
+            document.getElementById('welcome-section').style.display = 'flex';
+            document.getElementById('about-section').style.display = 'none';
+            document.getElementById('backButton').style.display = 'none'; // Hide back button
         });
     </script>
 
 </body>
+
 </html>
