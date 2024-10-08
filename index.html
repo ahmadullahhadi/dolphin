@@ -4,275 +4,344 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>A. Hadi</title>
-    <!-- Google Fonts for a professional look -->
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600&family=Roboto+Slab:wght@500&display=swap" rel="stylesheet">
+    <title>Ahmadullah Hadi - Portfolio</title>
+    <meta name="description" content="Ahmadullah Hadi - Student and Aspiring Technologist. Explore my journey, skills, and projects in technology and business.">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
     <style>
-        /* General Styles */
-        body {
-            font-family: 'Montserrat', sans-serif;
-            background-color: #1A1A2E; /* Dark blue background */
-            color: #E0E0E0; /* Light gray text */
+        :root {
+            --bg-color: #0a192f;
+            --text-color: #8892b0;
+            --highlight-color: #64ffda;
+            --secondary-color: #112240;
+        }
+
+        * {
+            box-sizing: border-box;
             margin: 0;
             padding: 0;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            line-height: 1.6;
             overflow-x: hidden;
         }
 
-        h1, h2 {
-            font-family: 'Roboto Slab', serif;
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
         }
 
-        a {
+        header {
+            position: fixed;
+            width: 100%;
+            top: 0;
+            left: 0;
+            padding: 1rem 0;
+            background-color: rgba(10, 25, 47, 0.85);
+            backdrop-filter: blur(10px);
+            z-index: 1000;
+            transition: all 0.3s ease;
+        }
+
+        nav ul {
+            display: flex;
+            justify-content: flex-end;
+            list-style: none;
+        }
+
+        nav ul li {
+            margin-left: 2rem;
+        }
+
+        nav ul li a {
+            color: var(--text-color);
             text-decoration: none;
-            color: #E0E0E0;
+            font-size: 0.9rem;
             transition: color 0.3s ease;
         }
 
-        a:hover {
-            color: #4ECCA3; /* Mint green for hover */
+        nav ul li a:hover {
+            color: var(--highlight-color);
         }
 
-        /* Welcome Page Styles */
-        .welcome-container {
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
-            background: linear-gradient(135deg, #1A1A2E 0%, #16213E 100%); /* Gradient background */
-            text-align: center;
+        section {
+            padding: 100px 0;
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.5s ease, transform 0.5s ease;
         }
 
-        .welcome-container h1 {
-            font-size: 4em;
-            font-weight: bold;
-            margin-bottom: 20px;
-            color: #4ECCA3; /* Mint green for main title */
-        }
-
-        .welcome-container p {
-            font-size: 1.5em;
-            margin-bottom: 30px;
-        }
-
-        button {
-            padding: 12px 24px;
-            background-color: #4ECCA3; /* Mint green for buttons */
-            border: none;
-            border-radius: 30px;
-            font-weight: bold;
-            color: #1A1A2E; /* Dark blue text on buttons */
-            cursor: pointer;
-            transition: background-color 0.3s ease, transform 0.3s ease;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
-        }
-
-        button:hover {
-            background-color: #45B08C; /* Darker mint green on hover */
-            transform: translateY(-3px);
-        }
-
-        /* About Me Page Styles */
-        .container {
-            max-width: 1000px;
-            margin: 40px auto;
-            padding: 40px;
-            background-color: #16213E; /* Slightly lighter blue for container */
-            border-radius: 15px;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
-            display: none;
+        section.visible {
+            opacity: 1;
+            transform: translateY(0);
         }
 
         h1, h2 {
-            text-align: center;
-            color: #4ECCA3; /* Mint green for headings */
+            color: #ccd6f6;
+            margin-bottom: 1rem;
         }
 
-        p {
-            font-size: 18px;
-            line-height: 1.7;
-            color: #E0E0E0; /* Light gray text */
-        }
-
-        .info {
-            display: flex;
-            justify-content: space-between;
-            background-color: #0F3460; /* Deep blue for info section */
-            padding: 20px;
-            border-radius: 10px;
-            margin-bottom: 30px;
-            color: #4ECCA3; /* Mint green for info text */
-            font-weight: bold;
-        }
-
-        .info p {
-            margin: 0;
-        }
-
-        .about, .learning, .goals, .contact {
-            background-color: #233554; /* Medium blue for content sections */
-            padding: 30px;
-            border-radius: 15px;
-            margin-bottom: 30px;
-            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.2);
-            transition: transform 0.3s ease;
-        }
-
-        .about:hover, .learning:hover, .goals:hover, .contact:hover {
-            transform: translateY(-5px);
+        h1 {
+            font-size: 3rem;
+            font-weight: 700;
         }
 
         h2 {
-            font-size: 28px;
-            margin-bottom: 20px;
+            font-size: 2rem;
+            font-weight: 600;
         }
 
-        ul {
-            list-style-type: none;
-            padding: 0;
+        p {
+            margin-bottom: 1rem;
+            font-size: 1rem;
         }
 
-        ul li {
-            background-color: #2C4875; /* Lighter blue for list items */
-            padding: 15px;
-            border-radius: 8px;
-            margin-bottom: 10px;
-            color: #E0E0E0; /* Light gray text */
-            transition: background-color 0.3s ease;
+        .hero {
+            height: 100vh;
+            display: flex;
+            align-items: center;
         }
 
-        ul li:hover {
-            background-color: #385F97; /* Slightly lighter blue on hover */
+        .hero-content {
+            max-width: 600px;
         }
 
-        /* Contact Section */
-        .contact ul li a {
-            position: relative;
-        }
-
-        .contact ul li a::after {
-            content: attr(data-hover);
-            position: absolute;
-            left: 0;
-            top: 100%;
-            background-color: #4ECCA3; /* Mint green for hover info */
-            color: #1A1A2E; /* Dark blue text for hover info */
-            padding: 5px;
-            font-size: 14px;
-            border-radius: 4px;
-            white-space: nowrap;
-            display: none;
-        }
-
-        .contact ul li a:hover::after {
+        .hero h1 span {
+            color: var(--highlight-color);
             display: block;
+            font-size: 1.2rem;
+            margin-bottom: 1rem;
         }
 
-        /* Floating Back Button */
-        .back-button {
-            position: fixed;
-            bottom: 20px;
-            right: 20px;
-            padding: 10px 15px;
-            background-color: #4ECCA3; /* Mint green for back button */
-            border: none;
-            border-radius: 30px;
-            color: #1A1A2E; /* Dark blue text for back button */
-            font-weight: bold;
-            cursor: pointer;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
-            transition: background-color 0.3s ease;
-            display: none; /* Hide by default */
+        .btn {
+            display: inline-block;
+            background-color: transparent;
+            color: var(--highlight-color);
+            border: 1px solid var(--highlight-color);
+            padding: 0.75rem 1.5rem;
+            font-size: 0.9rem;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            margin-top: 1rem;
         }
 
-        .back-button:hover {
-            background-color: #45B08C; /* Darker mint green on hover */
+        .btn:hover {
+            background-color: rgba(100, 255, 218, 0.1);
+        }
+
+        .about, .skills, .projects, .contact {
+            background-color: var(--secondary-color);
+            border-radius: 4px;
+            padding: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .skills ul {
+            display: flex;
+            flex-wrap: wrap;
+            list-style: none;
+            margin-top: 1rem;
+        }
+
+        .skills ul li {
+            margin-right: 1rem;
+            margin-bottom: 0.5rem;
+            background-color: rgba(100, 255, 218, 0.1);
+            color: var(--highlight-color);
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            font-size: 0.9rem;
+        }
+
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
+
+        .project-card {
+            background-color: var(--bg-color);
+            border-radius: 4px;
+            padding: 1.5rem;
+            transition: transform 0.3s ease;
+        }
+
+        .project-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .project-card h3 {
+            color: #ccd6f6;
+            margin-bottom: 0.5rem;
+        }
+
+        .contact ul {
+            list-style: none;
+        }
+
+        .contact ul li {
+            margin-bottom: 0.5rem;
+        }
+
+        .contact ul li a {
+            color: var(--text-color);
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .contact ul li a:hover {
+            color: var(--highlight-color);
+        }
+
+        footer {
+            text-align: center;
+            padding: 2rem 0;
+            font-size: 0.9rem;
         }
 
         @media (max-width: 768px) {
-            .info {
-                flex-direction: column;
-                text-align: center;
+            h1 {
+                font-size: 2.5rem;
             }
 
-            .info p {
-                margin-bottom: 15px;
+            h2 {
+                font-size: 1.8rem;
+            }
+
+            .hero {
+                height: auto;
+                padding-top: 150px;
+            }
+
+            nav ul {
+                justify-content: center;
+            }
+
+            nav ul li {
+                margin: 0 1rem;
             }
         }
     </style>
 </head>
 
 <body>
-
-    <!-- Welcome Section -->
-    <div class="welcome-container" id="welcome-section">
-        <h1>Welcome</h1>
-        <p>Thank you for visiting my website.</p>
-        <button id="aboutButton">Learn More About Me</button>
-    </div>
-
-    <!-- About Me Section -->
-    <div class="container" id="about-section">
-        <h1>About Me</h1>
-        <div class="info">
-            <p><strong>Name:</strong> Ahmadullah Hadi</p>
-            <p><strong>Gender:</strong> Male</p>
-            <p><strong>Birthday:</strong> August 2, 2009</p>
-            <p><strong>Nationality:</strong> Bangladeshi</p>
-        </div>
-
-        <div class="about">
-            <h2>Personal Background</h2>
-            <p>My name is Ahmadullah Hadi, and I am currently a student from Bangladesh. I have a keen interest in technology, programming, and business, and I am always eager to expand my knowledge in these fields.</p>
-            <p>In addition to my technical pursuits, I also enjoy music, reading manga, and caring for animals, particularly cats. These hobbies reflect my varied interests and curiosity about the world around me.</p>
-        </div>
-
-        <div class="learning">
-            <h2>Areas of Focus</h2>
+    <header>
+        <nav class="container">
             <ul>
-                <li>Programming (HTML, Python etc.)</li>
-                <li>Cybersecurity and Ethical Hacking</li>
-                <li>Marketing and Finance</li>
+                <li><a href="#home">Home</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#skills">Skills</a></li>
+                <li><a href="#projects">Projects</a></li>
+                <li><a href="#contact">Contact</a></li>
             </ul>
-        </div>
+        </nav>
+    </header>
 
-        <div class="goals">
-            <h2>Future Aspirations</h2>
-            <p>My goal is to build a career that merges my passion for technology with my interest in business. I am dedicated to developing my skills in programming, cybersecurity, and finance, with the hope of contributing meaningfully to the technology sector in the future.</p>
-        </div>
+    <main>
+        <section id="home" class="hero">
+            <div class="container hero-content">
+                <h1>
+                    <span>Hi, my name is</span>
+                    Ahmadullah Hadi
+                </h1>
+                <p>I'm a student and aspiring technologist from Bangladesh, passionate about merging technology, programming, and business to create innovative solutions.</p>
+                <a href="#contact" class="btn">Get In Touch</a>
+            </div>
+        </section>
 
-        <div class="contact">
-            <h2>Contact Information</h2>
-            <ul>
-                <li><a href="https://web.facebook.com/ahmadullahhadi" target="_blank" data-hover="Facebook: A. Hadi">Facebook</a></li>
-                <li><a href="www.linkedin.com/in/ahmadullah-hadi-b61936265" target="_blank" data-hover="LinkedIn: Ahmadullah Hadi">LinkedIn</a></li>
-                <li><a href="https://x.com/ahmadullahhadi" target="_blank" data-hover="X: A. Hadi">X</a></li>
-                <li><a href="https://github.com/ahmadullahhadi" target="_blank" data-hover="GitHub: ahmadullahhadi">GitHub</a></li>
-                <li><a href="https://www.instagram.com/oddman854" target="_blank" data-hover="Instagram: oddman854">Instagram</a></li>
-                <li><a href="mailto:ahmadullahhadi85@gmail.com" data-hover="Email: ahmadullahhadi85@gmail.com">Email</a></li>
-                <li><a href="tel:+8801611469710" data-hover="Phone: +880 1611-469710">Phone</a></li>
-            </ul>
-        </div>
-    </div>
+        <div class="container">
+            <section id="about" class="about">
+                <h2>About Me</h2>
+                <p>I'm Ahmadullah Hadi, a student with a keen interest in technology, programming, and business. My goal is to build a career that combines these passions, allowing me to contribute meaningfully to the tech sector.</p>
+                <p>When I'm not immersed in code or studying business concepts, you can find me enjoying music, reading anime/manga, or caring for animals, particularly cats. These diverse interests fuel my curiosity and drive for continuous learning.</p>
+            </section>
 
-    <button class="back-button" id="backButton">Back to Home</button>
+            <section id="skills" class="skills">
+                <h2>Skills in Progress</h2>
+                <ul>
+                    <li>HTML</li>
+                    <li>Python</li>
+                    <li>Cybersecurity Basics</li>
+                    <li>Marketing Fundamentals</li>
+                    <li>Finance Principles</li>
+                </ul>
+            </section>
+
+            <section id="projects" class="projects">
+                <h2>Projects</h2>
+                <p>I'm currently working on building my project portfolio. Check back soon to see my latest work!</p>
+                <div class="projects-grid">
+                    <div class="project-card">
+                        <h3>Project 1</h3>
+                        <p>Coming Soon</p>
+                    </div>
+                    <div class="project-card">
+                        <h3>Project 2</h3>
+                        <p>Coming Soon</p>
+                    </div>
+                    <div class="project-card">
+                        <h3>Project 3</h3>
+                        <p>Coming Soon</p>
+                    </div>
+                </div>
+            </section>
+
+            <section id="contact" class="contact">
+                <h2>Get In Touch</h2>
+                <p>I'm always open to new opportunities and connections. Feel free to reach out!</p>
+                <ul>
+                    <li><a href="https://web.facebook.com/ahmadullahhadi" target="_blank">Facebook</a></li>
+                    <li><a href="https://www.linkedin.com/in/ahmadullah-hadi-b61936265" target="_blank">LinkedIn</a></li>
+                    <li><a href="https://github.com/ahmadullahhadi" target="_blank">GitHub</a></li>
+                    <li><a href="mailto:ahmadullahhadi85@gmail.com">Email</a></li>
+                </ul>
+            </section>
+        </div>
+    </main>
+
+    <footer>
+        <p>&copy; 2024 Ahmadullah Hadi. All rights reserved.</p>
+    </footer>
 
     <script>
-        // Toggle between Welcome and About Me sections
-        document.getElementById('aboutButton').addEventListener('click', function() {
-            document.getElementById('welcome-section').style.display = 'none';
-            document.getElementById('about-section').style.display = 'block';
-            document.getElementById('backButton').style.display = 'block'; // Show back button
+        // Smooth scrolling
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
         });
 
-        // Back button functionality
-        document.getElementById('backButton').addEventListener('click', function() {
-            document.getElementById('welcome-section').style.display = 'flex';
-            document.getElementById('about-section').style.display = 'none';
-            document.getElementById('backButton').style.display = 'none'; // Hide back button
+        // Intersection Observer for fade-in effect
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, { threshold: 0.1 });
+
+        document.querySelectorAll('section').forEach(section => {
+            observer.observe(section);
+        });
+
+        // Shrink header on scroll
+        window.addEventListener('scroll', () => {
+            const header = document.querySelector('header');
+            if (window.scrollY > 100) {
+                header.style.padding = '0.5rem 0';
+            } else {
+                header.style.padding = '1rem 0';
+            }
         });
     </script>
-
 </body>
 
 </html>
